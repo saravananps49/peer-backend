@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require("cors")
+require("dotenv").config();
 
 const app = express();
 app.use(cors())
@@ -12,10 +13,16 @@ app.use(cors())
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/blogDB').then(()=>{
-  // mongoose.connect('mongodb+srv://john:123@cluster0.66qlp2n.mongodb.net/blogDB?appName=Cluster0').then(()=>{
+// mongoose.connect('mongodb://localhost:27017/blogDB').then(()=>{
+  mongoose.connect('mongodb+srv://john:123@cluster0.66qlp2n.mongodb.net/blogDB?appName=Cluster0').then(()=>{
     console.log("Connection Successfull")
 })
+
+// MONGO_URI='mongodb+srv://john:123@cluster0.66qlp2n.mongodb.net/blogDB?appName=Cluster0'
+
+// mongoose.connect(process.env.MONGO_URI)
+//   .then(() => console.log("MongoDB Connected"))
+//   .catch(err => console.log(err));
 
 
 // Define Schema
